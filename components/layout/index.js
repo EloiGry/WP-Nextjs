@@ -2,7 +2,6 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 
 export default function Layout({data, children}) {
-    console.log(data);
     return (
         <>
             <NavBar header={data.header} menu={data.menuHeader}/>

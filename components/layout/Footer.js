@@ -7,7 +7,7 @@ export default function Footer({header, footer, menuFooter}) {
         <div className="flex justify-between items-center bg-teal-500 p-6">
             <div className='flex flex-col'> {menuFooter.map(item => {
                 return (
-                    <Link href={`${process.env.NEXT_PUBLIC_URL}`} key={item.node.id}>
+                    <Link href='/' key={item.node.id}>
                         {item.node.label}
                     </Link>
                 )

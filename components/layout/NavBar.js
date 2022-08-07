@@ -13,7 +13,7 @@ export default function ({header, menu}) {
         {menu.map(item => {
             return (
                 <div className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" key={item.node.id}> 
-                    <Link href={`${process.env.NEXT_PUBLIC_URL}`}>
+                    <Link href={item.node.uri}>
                         {item.node.label}
                     </Link>
                 </div>
