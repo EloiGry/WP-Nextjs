@@ -3,6 +3,8 @@ import { GET_PAGE } from "../queries/pages/get_page";
 import { useRouter } from "next/router";
 import client from "../apollo/client";
 import { isCustomPageUri } from "../utils/slug";
+import Layout from "../components/layout";
+
 
 const Pages = ({data}) => {
   const router = useRouter();
@@ -11,7 +13,9 @@ const Pages = ({data}) => {
 	}
     console.log("slug" ,data);
     return (
-          <p> Hello </p>
+          <Layout data={data}>
+            <p> {data.page.content} </p>
+          </Layout>
     )
 };
 
@@ -21,9 +25,16 @@ export default Pages;
 export async function getStaticProps({params}) {
   const { data } = await client.query({query: GET_PAGE, variables: {uri: params.slug.join( '/' )}})
   return {
-    props: {
-      data: data,
-    },
+    props: 
+      { data :
+        {
+          page: data.page,
+          menuHeader : data.headerMenu.edges,
+          header: data.getHeader,
+          menuFooter: data.footerMenu.edges,
+          footer: data.getFooter
+        }, 
+      }
  };
 }
 
